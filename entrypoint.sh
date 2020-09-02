@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 name=$1
 namespace=$2
@@ -13,4 +13,4 @@ params="--namespac=$namespace"
 fi
 
 echo running: okteto pipeline on $(pwd)
-okteto create pipeline --branch=$branch --repository=$repository $params --wait
+okteto create pipeline --branch=${branch} --repository=https://github.com/${repository} ${params} --wait
