@@ -45,5 +45,7 @@ jobs:
     
     - name: "Trigger the pipeline"
       uses: okteto/pipelines@master
+      with:
+        name: pr-${{ github.event.number }}
 ```
 

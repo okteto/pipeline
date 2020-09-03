@@ -1,27 +1,21 @@
 #!/bin/sh
-set -ex
+set -e
 
 name=$1
 namespace=$2
-repository=$GITHUB_REPOSITORY
 
 if [ -z $GITHUB_REF ]; then
 echo "fail to detect branch name"
 exit 1
 fi
 
+repository=$GITHUB_REPOSITORY
 branch=$(echo ${GITHUB_REF##*/})
-
-if [ -z $name ]; then
-name="${GITHUB_ACTION}-${GITHUB_RUN_NUMBER}"
-fi
 
 params=""
 if [ ! -z $namespace ]; then
 params="--namespace=$namespace"
 fi
 
-
-
-echo running: okteto pipeline on $(pwd)
+echo running: okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
 okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait

@@ -3,7 +3,7 @@ description: "Trigger you repository's okteto pipeline"
 inputs:
   name: 
     description: 'The name of the pipeline'
-    required: false
+    required: true
   namespace: 
     description: 'If present, the namespace scope for this action. If not specified, it will use the current context'
     required: false
