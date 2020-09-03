@@ -15,6 +15,10 @@ You can use this action to enable your CI/CD workflow in [Okteto Cloud](https://
 
 ## Inputs
 
+### `name`
+
+The name of the pipeline.
+
 ### `namespace`
 
 The Okteto namespace to use. If not specified it will use the namespace specified by the `namespace` action.
