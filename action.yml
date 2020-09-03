@@ -1,5 +1,5 @@
 name: "Okteto Pipeline"
-description: "Trigger you repository's okteto pipeline"
+description: "Trigger your repository's okteto pipeline"
 inputs:
   name: 
     description: 'The name of the pipeline'
