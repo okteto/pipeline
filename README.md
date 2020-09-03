@@ -40,11 +40,14 @@ jobs:
   devflow:
     runs-on: ubuntu-latest
     steps:
-    
-    - uses: okteto/login@master
+    - name: checkout
+      uses: actions/checkout@master    
+
+    - name: Login
+      uses: okteto/login@master
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
-    
+
     - name: "Activate Namespace"
       uses: okteto/namespace@master
       with:
