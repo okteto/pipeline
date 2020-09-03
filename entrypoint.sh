@@ -13,15 +13,15 @@ fi
 branch=$(echo ${GITHUB_REF##*/})
 
 if [ -z $name ]; then
-name="${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}"
+name="${GITHUB_ACTION}-${GITHUB_RUN_NUMBER}"
 fi
 
 params=""
 if [ ! -z $namespace ]; then
-params="--namespac=$namespace"
+params="--namespace=$namespace"
 fi
 
 
 
 echo running: okteto pipeline on $(pwd)
-okteto create pipeline --name ${name} --branch=${branch} --repository=${GITHUB_SERVER_URL}/${repository} ${params} --wait
+okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
