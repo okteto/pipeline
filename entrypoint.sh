@@ -3,8 +3,8 @@ set -ex
 
 name=$1
 namespace=$2
-repository=$3
-branch=$4
+repository=$GITHUB_REPOSITORY
+branch=$GITHUB_REF
 
 params=""
 

@@ -14,8 +14,6 @@ runs:
   args:
     - ${{ inputs.name }}
     - ${{ inputs.namespace }}
-    - ${{ github.repository }}
-    - ${{ github.ref }}
 branding:
   color: 'green'
   icon: 'settings'
