@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 name=$1
 namespace=$2
@@ -10,6 +10,10 @@ exit 1
 fi
 
 repository=$GITHUB_REPOSITORY
+echo ${GITHUB_REF}
+b=$(git rev-parse --abbrev-ref HEAD)
+echo $b
+
 branch=$(echo ${GITHUB_REF##*/})
 
 params=""
