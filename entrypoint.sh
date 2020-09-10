@@ -11,8 +11,7 @@ fi
 
 repository=$GITHUB_REPOSITORY
 echo ${GITHUB_REF}
-b=$(git rev-parse --abbrev-ref HEAD)
-echo $b
+set
 
 branch=$(echo ${GITHUB_REF##*/})
 
