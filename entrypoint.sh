@@ -23,4 +23,4 @@ params="--namespace=$namespace"
 fi
 
 echo running: okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
-okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
+okteto create pipeline --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait -l=debug
