@@ -10,10 +10,12 @@ exit 1
 fi
 
 repository=$GITHUB_REPOSITORY
-echo ${GITHUB_REF}
-set
 
-branch=$(echo ${GITHUB_REF##*/})
+if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+  branch=${GITHUB_HEAD_REF}
+else
+  branch=$(echo ${GITHUB_REF##*/})
+fi
 
 params=""
 if [ ! -z $namespace ]; then
