@@ -20,7 +20,7 @@ fi
 
 params=""
 if [ ! -z $namespace ]; then
-params="--namespace=$namespace"
+params="--namespace=$namespace "
 fi
 
 if [ ! -z $timeout ]; then
