@@ -23,6 +23,10 @@ The name of the pipeline.
 
 The Okteto namespace to use. If not specified it will use the namespace specified by the `namespace` action.
 
+### `timeout`
+
+The length of time to wait for completion. Values should contain a corresponding time unit e.g. 1s, 2m, 3h. If not specified it will use `5m`.
+
 # Example usage
 
 This example runs the login action, activates a namespace, and triggers the Okteto pipeline
@@ -57,5 +61,6 @@ jobs:
       uses: okteto/pipeline@master
       with:
         name: pr-${{ github.event.number }}
+        timeout: 8m
 ```
 
