@@ -7,12 +7,16 @@ inputs:
   namespace: 
     description: 'If present, the namespace scope for this action. If not specified, it will use the current context'
     required: false
+  timeout: 
+    description: 'The length of time to wait for completion, zero means never. Any other values should contain a corresponding time unit e.g. 1s, 2m, 3h  (default 5m0s)'
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
     - ${{ inputs.name }}
     - ${{ inputs.namespace }}
+    - ${{ inputs.timeout }}
 branding:
   color: 'green'
   icon: 'settings'

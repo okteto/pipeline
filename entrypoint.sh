@@ -3,6 +3,7 @@ set -ex
 
 name=$1
 namespace=$2
+timeout=$3
 
 if [ -z $GITHUB_REF ]; then
 echo "fail to detect branch name"
@@ -19,8 +20,13 @@ fi
 
 params=""
 if [ ! -z $namespace ]; then
-params="--namespace=$namespace"
+params="--namespace=$namespace "
 fi
+
+if [ ! -z $timeout ]; then
+params="--timeout=$timeout"
+fi
+
 
 echo running: okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
 okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
