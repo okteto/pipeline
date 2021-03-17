@@ -27,6 +27,7 @@ if [ ! -z $timeout ]; then
 params="--timeout=$timeout"
 fi
 
+export OKTETO_DISABLE_SPINNER=1
 
 echo running: okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
 okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
