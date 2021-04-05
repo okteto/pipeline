@@ -15,7 +15,7 @@ repository=$GITHUB_REPOSITORY
 if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
   branch=${GITHUB_HEAD_REF}
 else
-  branch=$(echo ${GITHUB_REF##*/})
+  branch=$(echo ${GITHUB_REF#refs/heads/})
 fi
 
 params=""
