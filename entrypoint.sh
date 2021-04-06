@@ -15,16 +15,16 @@ repository=$GITHUB_REPOSITORY
 if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
   branch=${GITHUB_HEAD_REF}
 else
-  branch=$(echo ${GITHUB_REF##*/})
+  branch=$(echo ${GITHUB_REF#refs/heads/})
 fi
 
 params=""
 if [ ! -z $namespace ]; then
-params="--namespace=$namespace "
+params="--namespace=$namespace"
 fi
 
 if [ ! -z $timeout ]; then
-params="--timeout=$timeout"
+params="${params} --timeout=$timeout"
 fi
 
 export OKTETO_DISABLE_SPINNER=1
