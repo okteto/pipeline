@@ -20,11 +20,11 @@ fi
 
 params=""
 if [ ! -z $namespace ]; then
-params="--namespace=$namespace "
+params="--namespace=$namespace"
 fi
 
 if [ ! -z $timeout ]; then
-params="--timeout=$timeout"
+params="${params} --timeout=$timeout"
 fi
 
 export OKTETO_DISABLE_SPINNER=1
