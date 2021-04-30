@@ -7,7 +7,7 @@ Get started today with a [free Okteto Cloud account](https://cloud.okteto.com)!
 
 # Github Action for developers to trigger Okteto Pipelines from a GitHub Actions workflow
 
-You can use this action to trigger an [Okteto Pipeline](https://okteto.com/blog/cloud-based-development-environments/) based on Github events. 
+You can use this action to trigger an [Okteto Pipeline](https://okteto.com/blog/cloud-based-development-environments/) based on Github events.
 
 You can use this action to enable your CI/CD workflow in [Okteto Cloud](https://cloud.okteto.com).
 
@@ -27,6 +27,14 @@ The Okteto namespace to use. If not specified it will use the namespace specifie
 
 The length of time to wait for completion. Values should contain a corresponding time unit e.g. 1s, 2m, 3h. If not specified it will use `5m`.
 
+### `skipIfExists`
+
+Skip the pipeline deployment if the pipeline already exists in the namespace (defaults to false)
+
+### `variables`
+
+A list of variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3.
+
 # Example usage
 
 This example runs the login action, activates a namespace, and triggers the Okteto pipeline
@@ -45,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: actions/checkout@master    
+      uses: actions/checkout@master
 
     - name: Login
       uses: okteto/login@master
@@ -56,11 +64,13 @@ jobs:
       uses: okteto/namespace@master
       with:
         name: cindylopez
-    
+
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@master
       with:
         name: pr-${{ github.event.number }}
         timeout: 8m
+        skipIfExists: true
+        variables: "DB_HOST=mysql,CONFIG_PATH=/tmp/config.yaml"
 ```
 
