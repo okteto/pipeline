@@ -4,6 +4,8 @@ set -ex
 name=$1
 namespace=$2
 timeout=$3
+skip_if_exists=$4
+variables=$5
 
 if [ -z $GITHUB_REF ]; then
 echo "fail to detect branch name"
@@ -25,6 +27,19 @@ fi
 
 if [ ! -z $timeout ]; then
 params="${params} --timeout=$timeout"
+fi
+
+if [ "$skip_if_exists" == "true" ]; then
+params="${params} --skip-if-exists"
+fi
+
+variable_params=""
+if [ ! -z "${variables}" ]; then
+  for ARG in $(echo "${variables}" | tr ',' '\n'); do
+    variable_params="${variable_params} --var ${ARG}"
+  done
+
+  params="${params} $variable_params"
 fi
 
 export OKTETO_DISABLE_SPINNER=1
