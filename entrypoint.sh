@@ -6,6 +6,7 @@ namespace=$2
 timeout=$3
 skip_if_exists=$4
 variables=$5
+filename=$6
 
 if [ -z $GITHUB_REF ]; then
 echo "fail to detect branch name"
@@ -40,6 +41,10 @@ if [ ! -z "${variables}" ]; then
   done
 
   params="${params} $variable_params"
+fi
+
+if [ ! -z $filename ]; then
+params="${params} --filename=$filename"
 fi
 
 export OKTETO_DISABLE_SPINNER=1

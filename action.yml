@@ -16,6 +16,9 @@ inputs:
   variables:
     description: 'Variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3'
     required: false
+  filename:
+    description: 'The relative path within the repository to the Okteto pipeline file'
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -25,6 +28,7 @@ runs:
     - ${{ inputs.timeout }}
     - ${{ inputs.skipIfExists }}
     - ${{ inputs.variables }}
+    - ${{ inputs.filename }}
 branding:
   color: 'green'
   icon: 'settings'
