@@ -12,6 +12,12 @@ echo "fail to detect branch name"
 exit 1
 fi
 
+if [[ ! -z "$CUSTOM_CERTIFICATE" ]]; then
+  echo "Custom certificate is provided"
+  echo "$CUSTOM_CERTIFICATE" > /usr/local/share/ca-certificates/custom_certificate_crt
+  update-ca-certificates
+fi
+
 repository=$GITHUB_REPOSITORY
 
 if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
