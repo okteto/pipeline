@@ -7,6 +7,12 @@ timeout=$3
 skip_if_exists=$4
 variables=$5
 
+if [[ ! -z "$OKTETO_CA_CERT" ]]; then
+   echo "Custom certificate is provided"
+   echo "$OKTETO_CA_CERT" > /usr/local/share/ca-certificates/okteto_ca_cert
+   update-ca-certificates
+fi
+
 if [ -z $GITHUB_REF ]; then
 echo "fail to detect branch name"
 exit 1
