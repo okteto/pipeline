@@ -56,17 +56,17 @@ jobs:
       uses: actions/checkout@master
 
     - name: Login
-      uses: okteto/login@master
+      uses: okteto/login@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: "Activate Namespace"
-      uses: okteto/namespace@master
+      uses: okteto/namespace@latest
       with:
         name: cindylopez
 
     - name: "Trigger the pipeline"
-      uses: okteto/pipeline@master
+      uses: okteto/pipeline@latest
       with:
         name: pr-${{ github.event.number }}
         timeout: 8m
@@ -97,17 +97,17 @@ jobs:
        OKTETO_CA_CERT: ${{ secrets.OKTETO_CA_CERT }}
      steps:
      
-     - uses: okteto/login@master
+     - uses: okteto/login@latest
        with:
          token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: "Activate Namespace"
-      uses: okteto/namespace@master
+      uses: okteto/namespace@latest
       with:
         name: cindylopez
 
     - name: "Trigger the pipeline"
-      uses: okteto/pipeline@master
+      uses: okteto/pipeline@latest
       with:
         name: pr-${{ github.event.number }}
         timeout: 8m
