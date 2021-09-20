@@ -5,7 +5,8 @@ name=$1
 namespace=$2
 timeout=$3
 skip_if_exists=$4
-variables=$5
+path=$5
+variables=$6
 
 if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
@@ -50,5 +51,5 @@ fi
 
 export OKTETO_DISABLE_SPINNER=1
 
-echo running: okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
-okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
+echo running: okteto pipeline deploy -f "${path}" --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
+okteto pipeline deploy -f "${path}" --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
