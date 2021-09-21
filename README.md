@@ -35,7 +35,7 @@ Skip the pipeline deployment if the pipeline already exists in the namespace (de
 
 A list of variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3.
 
-### `filePath`
+### `filename`
 
 path to the pipeline file, if not specified the [default file path](https://okteto.com/docs/cloud/okteto-pipeline#customize-the-okteto-pipeline) will be used
 

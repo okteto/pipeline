@@ -6,7 +6,7 @@ namespace=$2
 timeout=$3
 skip_if_exists=$4
 variables=$5
-filePath=$6
+filename=$6
 
 if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
@@ -49,22 +49,12 @@ if [ ! -z "${variables}" ]; then
   params="${params} $variable_params"
 fi
 
-export OKTETO_DISABLE_SPINNER=1
-
-output=$(cat <<-END
-    okteto pipeline deploy
-    --name "${name}"
-    --branch="${branch}"
-    --repository="${GITHUB_SERVER_URL}/${repository}"
-    ${params}
-END
-)
-
-if [ -n "$filePath" ]; then
-  output="$output -f "${filePath}""
+if [ ! -z "$filename" ]; then
+  params="${params} -f "${filename}""
 fi
 
-output="$output --wait"
+export OKTETO_DISABLE_SPINNER=1
 
+output="okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait"
 echo running: $output
 eval $output
