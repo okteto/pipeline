@@ -6,7 +6,7 @@ namespace=$2
 timeout=$3
 skip_if_exists=$4
 variables=$5
-path=$6
+filePath=$6
 
 if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
@@ -51,15 +51,20 @@ fi
 
 export OKTETO_DISABLE_SPINNER=1
 
-if [ -z "$path" ]
-then
-      echo "\$path is empty"
-else
-      echo "\$path is NOT empty"
+output=$(cat <<-END
+    okteto pipeline deploy
+    --name "${name}"
+    --branch="${branch}"
+    --repository="${GITHUB_SERVER_URL}/${repository}"
+    ${params}
+END
+)
+
+if [ -n "$filePath" ]; then
+  output="$output -f "${filePath}""
 fi
 
-# output="Hello World!"
-# echo $STR    
+output="$output --wait"
 
-# echo running: okteto pipeline deploy -f "${path}" --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
-# okteto pipeline deploy -f "${path}" --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait
+echo running: $output
+eval $output
