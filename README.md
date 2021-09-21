@@ -37,7 +37,7 @@ A list of variables to be used by the pipeline. If several variables are present
 
 ### `filename`
 
-The relative path within the repository to the pipeline file. If not specified the [default pipeline](https://okteto.com/docs/cloud/okteto-pipeline#customize-the-okteto-pipeline) is executed
+The relative path within the repository to the pipeline file. If not specified the [default pipeline](https://okteto.com/docs/cloud/okteto-pipeline#customize-the-okteto-pipeline) is executed.
 
 # Example usage
 
