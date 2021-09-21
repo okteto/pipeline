@@ -13,11 +13,11 @@ inputs:
   skipIfExists:
     description: "Skip the pipeline deployment if the pipeline already exists in the namespace (defaults to false)"
     required: false
-  path:
-    description: "path to the pipeline file, if not specified the default path will be used"
-    required: false
   variables:
     description: "Variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3"
+    required: false
+  path:
+    description: "path to the pipeline file, if not specified the default path will be used"
     required: false
 runs:
   using: "docker"
@@ -27,8 +27,8 @@ runs:
     - ${{ inputs.namespace }}
     - ${{ inputs.timeout }}
     - ${{ inputs.skipIfExists }}
-    - ${{ inputs.path }}
     - ${{ inputs.variables }}
+    - ${{ inputs.path }}
 branding:
   color: "green"
   icon: "settings"
