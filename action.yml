@@ -2,19 +2,22 @@ name: "Okteto Pipeline"
 description: "Trigger your repository's okteto pipeline"
 inputs:
   name:
-    description: 'The name of the pipeline'
+    description: "The name of the pipeline"
     required: true
   namespace:
-    description: 'If present, the namespace scope for this action. If not specified, it will use the current context'
+    description: "If present, the namespace scope for this action. If not specified, it will use the current context"
     required: false
   timeout:
-    description: 'The length of time to wait for completion, zero means never. Any other values should contain a corresponding time unit e.g. 1s, 2m, 3h  (default 5m0s)'
+    description: "The length of time to wait for completion, zero means never. Any other values should contain a corresponding time unit e.g. 1s, 2m, 3h  (default 5m0s)"
     required: false
   skipIfExists:
-    description: 'Skip the pipeline deployment if the pipeline already exists in the namespace (defaults to false)'
+    description: "Skip the pipeline deployment if the pipeline already exists in the namespace (defaults to false)"
     required: false
   variables:
-    description: 'Variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3'
+    description: "Variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3"
+    required: false
+  filename:
+    description: "path to the pipeline file, if not specified the default path will be used"
     required: false
 runs:
   using: "docker"
@@ -25,6 +28,7 @@ runs:
     - ${{ inputs.timeout }}
     - ${{ inputs.skipIfExists }}
     - ${{ inputs.variables }}
+    - ${{ inputs.filename }}
 branding:
-  color: 'green'
-  icon: 'settings'
+  color: "green"
+  icon: "settings"

@@ -35,6 +35,10 @@ Skip the pipeline deployment if the pipeline already exists in the namespace (de
 
 A list of variables to be used by the pipeline. If several variables are present, they should be separated by commas e.g. VAR1=VAL1,VAR2=VAL2,VAR3=VAL3.
 
+### `filename`
+
+The relative path within the repository to the pipeline file. If not specified the [default pipeline](https://okteto.com/docs/cloud/okteto-pipeline#customize-the-okteto-pipeline) is executed.
+
 # Example usage
 
 This example runs the login action, activates a namespace, and triggers the Okteto pipeline
@@ -112,5 +116,6 @@ jobs:
         name: pr-${{ github.event.number }}
         timeout: 8m
         skipIfExists: true
+        filename: .okteto/custom-pipeline.yaml
         variables: "DB_HOST=mysql,CONFIG_PATH=/tmp/config.yaml"
  ```
