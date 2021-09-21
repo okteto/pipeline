@@ -116,6 +116,6 @@ jobs:
         name: pr-${{ github.event.number }}
         timeout: 8m
         skipIfExists: true
-        path: .okteto/custom-pipeline.yaml
+        filename: .okteto/custom-pipeline.yaml
         variables: "DB_HOST=mysql,CONFIG_PATH=/tmp/config.yaml"
  ```
