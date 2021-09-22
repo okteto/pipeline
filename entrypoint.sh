@@ -8,6 +8,11 @@ skip_if_exists=$4
 variables=$5
 filename=$6
 
+if [ -z $name ]; then
+  echo "name parameter is mandatory"
+  exit 1
+fi
+
 if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
    echo "$OKTETO_CA_CERT" > /usr/local/share/ca-certificates/okteto_ca_cert
