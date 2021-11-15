@@ -41,7 +41,7 @@ The relative path within the repository to the pipeline file. If not specified t
 
 # Example usage
 
-This example runs the login action, activates a namespace, and triggers the Okteto pipeline
+This example runs the context action, activates a namespace, and triggers the Okteto pipeline
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -59,8 +59,8 @@ jobs:
     - name: checkout
       uses: actions/checkout@master
 
-    - name: Login
-      uses: okteto/login@latest
+    - name: context
+      uses: okteto/context@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
 
@@ -101,7 +101,7 @@ jobs:
        OKTETO_CA_CERT: ${{ secrets.OKTETO_CA_CERT }}
      steps:
      
-     - uses: okteto/login@latest
+     - uses: okteto/context@latest
        with:
          token: ${{ secrets.OKTETO_TOKEN }}
 
