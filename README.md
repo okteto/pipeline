@@ -15,7 +15,7 @@ You can use this action to enable your CI/CD workflow in [Okteto Cloud](https://
 
 Both the [Deploy Preview Environment](https://github.com/okteto/deploy-preview) and [Deploy Pipeline](https://github.com/okteto/pipeline) [GitHub actions](https://github.com/okteto/actions) deploy your application based on the [Okteto Pipeline](https://www.okteto.com/docs/cloud/okteto-pipeline/) manifest present in your repository. If you've not set up an Okteto Pipeline, the action will analyze the source code of your repository, looking for clues on how to deploy your application. You can read more about this [here](https://www.okteto.com/docs/cloud/deploy-from-git/#prerequisites). 
 
-The application deployed by the Deploy Preview Environment action will be deployed and available under the "Previews" section on the [Okteto Cloud](https://www.okteto.com/docs/cloud/) dashboard, whereas the Deploy Pipeline action will simply deploy to a [Namespace](https://www.okteto.com/docs/cloud/namespaces/) on Okteto Cloud.
+Your application will be deployed to the [Namespace](https://www.okteto.com/docs/cloud/namespaces/) on Okteto Cloud that you specified.
 
 ## Inputs
 
