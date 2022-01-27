@@ -13,6 +13,10 @@ You can use this action to enable your CI/CD workflow in [Okteto Cloud](https://
 
 [This document](https://okteto.com/docs/tutorials/getting-started-with-pipelines/index.html) has more information on this workflow.
 
+The [Deploy Pipeline](https://github.com/okteto/pipeline) [GitHub action](https://github.com/okteto/actions) deploys your application based on the [Okteto Pipeline](https://www.okteto.com/docs/cloud/okteto-pipeline/) manifest present in your repository. If you've not set up an Okteto Pipeline, the action will analyze the source code of your repository, looking for clues on how to deploy your application. You can read more about this [here](https://www.okteto.com/docs/cloud/deploy-from-git/#prerequisites). 
+
+Your application will be deployed to the [Namespace](https://www.okteto.com/docs/cloud/namespaces/) on Okteto Cloud that you specified.
+
 ## Inputs
 
 ### `name`
