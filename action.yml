@@ -20,7 +20,7 @@ inputs:
     description: "path to the pipeline file, if not specified the default path will be used"
     required: false
   loglevel:
-    description: "amount of information outputted (debug, info, warn, error) (default "warn")"
+    description: "amount of information outputted (debug, info, warn, error) (default warn)"
     required: false
 runs:
   using: "docker"
