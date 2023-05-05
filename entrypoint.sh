@@ -7,6 +7,7 @@ timeout=$3
 skip_if_exists=$4
 variables=$5
 filename=$6
+loglevel=$7
 
 if [ -z $name ]; then
   echo "name parameter is mandatory"
@@ -56,6 +57,10 @@ fi
 
 if [ ! -z "$filename" ]; then
   params="${params} -f "${filename}""
+fi
+
+if [ ! -z "$loglevel" ]; then
+  params="${params} --log-level "${loglevel}""
 fi
 
 export OKTETO_DISABLE_SPINNER=1

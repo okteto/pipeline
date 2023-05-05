@@ -19,6 +19,9 @@ inputs:
   filename:
     description: "path to the pipeline file, if not specified the default path will be used"
     required: false
+  loglevel:
+    description: "amount of information outputted (debug, info, warn, error) (default "warn")"
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -29,6 +32,7 @@ runs:
     - ${{ inputs.skipIfExists }}
     - ${{ inputs.variables }}
     - ${{ inputs.filename }}
+    - ${{ inputs.loglevel }}
 branding:
   color: "green"
   icon: "settings"
