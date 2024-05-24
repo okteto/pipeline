@@ -43,6 +43,10 @@ A list of variables to be used by the pipeline. If several variables are present
 
 The relative path within the repository to the pipeline file. If not specified the [default pipeline](https://okteto.com/docs/cloud/okteto-pipeline#customize-the-okteto-pipeline) is executed.
 
+### `log-level`
+
+Log level used. Supported values are: `debug`, `info`, `warn`, `error`. (defaults to warn)
+
 # Example usage
 
 This example runs the context action, activates a namespace, and triggers the Okteto pipeline
