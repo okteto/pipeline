@@ -65,7 +65,7 @@ if [ ! -z "$log_level" ]; then
   if [ "$log_level" = "debug" ] || [ "$log_level" = "info" ] || [ "$log_level" = "warn" ] || [ "$log_level" = "error" ] ; then
     log_level="--log-level ${log_level}"
   else
-    echo "log-level supported: debug, info, warn, error"
+    echo "unsupported log-level ${log_level}, supported options are: debug, info, warn, error"
     exit 1
   fi
 fi
