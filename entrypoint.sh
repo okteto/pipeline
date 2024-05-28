@@ -60,6 +60,22 @@ fi
 
 export OKTETO_DISABLE_SPINNER=1
 
-output="okteto pipeline deploy --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait"
+log_level=$7
+if [ ! -z "$log_level" ]; then
+  if [ "$log_level" = "debug" ] || [ "$log_level" = "info" ] || [ "$log_level" = "warn" ] || [ "$log_level" = "error" ] ; then
+    log_level="--log-level ${log_level}"
+  else
+    echo "unsupported log-level ${log_level}, supported options are: debug, info, warn, error"
+    exit 1
+  fi
+fi
+
+# https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/enabling-debug-logging
+# https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+if [ "${RUNNER_DEBUG}" = "1" ]; then
+  log_level="--log-level debug"
+fi
+
+output="okteto pipeline deploy $log_level --name "${name}" --branch="${branch}" --repository="${GITHUB_SERVER_URL}/${repository}" ${params} --wait"
 echo running: $output
 eval $output
