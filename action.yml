@@ -19,6 +19,9 @@ inputs:
   filename:
     description: "path to the pipeline file, if not specified the default path will be used"
     required: false
+  dependencies:
+    description: "Redeploy the dependencies in the okteto manifest"
+    required: false
   log-level:
     description: "Log level string. Valid options are debug, info, warn, error"
     required: false
@@ -32,6 +35,7 @@ runs:
     - ${{ inputs.skipIfExists }}
     - ${{ inputs.variables }}
     - ${{ inputs.filename }}
+    - ${{ inputs.dependencies }}
     - ${{ inputs.log-level }}
 branding:
   color: "green"

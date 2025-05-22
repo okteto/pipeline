@@ -7,6 +7,8 @@ timeout=$3
 skip_if_exists=$4
 variables=$5
 filename=$6
+dependencies=$7
+log_level=$8
 
 if [ -z $name ]; then
   echo "name parameter is mandatory"
@@ -58,9 +60,12 @@ if [ ! -z "$filename" ]; then
   params="${params} -f "${filename}""
 fi
 
+if [ "$dependencies" == "true" ]; then
+  params="${params} --dependencies"
+fi
+
 export OKTETO_DISABLE_SPINNER=1
 
-log_level=$7
 if [ ! -z "$log_level" ]; then
   log_level="--log-level ${log_level}"
 fi
