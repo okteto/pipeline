@@ -60,7 +60,9 @@ if [ ! -z "$filename" ]; then
   params="${params} -f "${filename}""
 fi
 
-if [ "$dependencies" == "true" ]; then
+if [ "$dependencies" = "false" ]; then
+  params="${params} --dependencies=false"
+elif [ "$dependencies" = "true" ]; then
   params="${params} --dependencies"
 fi
 
