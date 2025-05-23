@@ -20,7 +20,7 @@ inputs:
     description: "path to the pipeline file, if not specified the default path will be used"
     required: false
   dependencies:
-    description: "Redeploy the dependencies in the okteto manifest"
+    description: "Force deployment of repositories in the 'dependencies' section"
     required: false
   log-level:
     description: "Log level string. Valid options are debug, info, warn, error"
