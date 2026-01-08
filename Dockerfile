@@ -1,4 +1,4 @@
-FROM ghcr.io/okteto/okteto:3.15.0
+FROM ghcr.io/okteto/okteto:master
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
