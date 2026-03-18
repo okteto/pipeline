@@ -17,8 +17,12 @@ fi
 
 if [ ! -z "$OKTETO_CA_CERT" ]; then
    echo "Custom certificate is provided"
-   echo "$OKTETO_CA_CERT" > /usr/local/share/ca-certificates/okteto_ca_cert.crt
-   update-ca-certificates
+   echo "$OKTETO_CA_CERT" > /etc/ssl/certs/okteto_ca_cert.pem
+   if command -v update-ca-certificates > /dev/null 2>&1; then
+     mkdir -p /usr/local/share/ca-certificates
+     cp /etc/ssl/certs/okteto_ca_cert.pem /usr/local/share/ca-certificates/okteto_ca_cert.crt
+     update-ca-certificates
+   fi
 fi
 
 if [ -z $GITHUB_REF ]; then
